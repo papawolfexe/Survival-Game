@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// this is a scriptable object that defines what an item is in our game
+/// it could be inherited from to have branched version of items, for example food and equipment
+/// </summary>
+
+
+
 [CreateAssetMenu(menuName = "Inventory System/Inventory Item")]
 public class InventoryItemData : ScriptableObject
 {
