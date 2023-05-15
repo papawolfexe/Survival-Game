@@ -7,40 +7,70 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
-    
-    // Update is called once per frame
-    void Update()
+    public GameObject mouseLookScriptObject;
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {
                 Resume();
-            }else{
+            }
+            else
+            {
                 Pause();
             }
-        }    
+        }
     }
-    public void Resume ()
+
+    public void Resume()
     {
         PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
         GameIsPaused = false;
+        EnableMouseLookScript();
+        Time.timeScale = 1f;
     }
-    void Pause ()
+
+    void Pause()
     {
         PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         GameIsPaused = true;
+        DisableMouseLookScript();
+        Time.timeScale = 0f;
     }
-    public void LoadMenu ()
+
+    public void LoadMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
-    public void QuitGame ()
+
+    public void QuitGame()
     {
         Application.Quit();
         Debug.Log("Player has Quit the game");
+    }
+
+    private void EnableMouseLookScript()
+    {
+        MouseLook mouseLookScript = mouseLookScriptObject.GetComponent<MouseLook>();
+        if (mouseLookScript != null)
+        {
+            mouseLookScript.enabled = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
+    private void DisableMouseLookScript()
+    {
+        MouseLook mouseLookScript = mouseLookScriptObject.GetComponent<MouseLook>();
+        if (mouseLookScript != null)
+        {
+            mouseLookScript.enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }
