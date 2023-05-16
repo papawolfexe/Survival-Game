@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
+    //mouse sensitivity function 
     public float mouseSensitivity = 100f;
     public Transform playerBody;
 
     private float xRotation = 0f;
     private bool isScriptEnabled = true;
 
+    //changeable cursor lock state
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    //
     private void Update()
     {
+        //Tab and Escape enable and disable the mouse look script
         if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleScriptEnabledState();
         }
-
+        //mouse x and y axis movement
         if (isScriptEnabled)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -35,7 +37,7 @@ public class MouseLook : MonoBehaviour
             playerBody.Rotate(Vector3.up * mouseX);
         }
     }
-
+    //manages lock states and script enabling 
     private void ToggleScriptEnabledState()
     {
         isScriptEnabled = !isScriptEnabled;

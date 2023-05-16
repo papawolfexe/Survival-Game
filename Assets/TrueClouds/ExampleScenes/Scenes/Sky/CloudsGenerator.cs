@@ -6,7 +6,7 @@ public class CloudsGenerator : MonoBehaviour
 {
     public float Density = 2;
     public GameObject[] Prefabs = new GameObject[0];
-    public Vector3 StartPos = Vector3.zero;
+    public Vector3 StartPos = new Vector3(-3000, 0, -1300);
     public Vector3 EndPos = new Vector3(100, 0, 100);
     public Texture2D HeightMap;
 
@@ -16,7 +16,7 @@ public class CloudsGenerator : MonoBehaviour
         Vector3 curPos = StartPos;
         while (curPos.z < EndPos.z)
         {
-            curPos.z += Random.Range(Density/2, Density*1.5f);
+            curPos.z += Random.Range(Density / 2, Density * 1.5f);
             curPos.x = StartPos.x;
             while (curPos.x < EndPos.x)
             {
@@ -39,7 +39,7 @@ public class CloudsGenerator : MonoBehaviour
                     width,
                     10,
                     width
-                    );
+                );
                 placed.transform.parent = transform;
             }
         }
@@ -48,6 +48,7 @@ public class CloudsGenerator : MonoBehaviour
 
     void Update()
     {
-        transform.position += Vector3.back * Time.deltaTime * 100;
+        transform.position += Vector3.back * Time.deltaTime * 50;
+        transform.position = new Vector3(-3000, transform.position.y, transform.position.z);
     }
 }
