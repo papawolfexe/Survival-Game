@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/HotBar 2.prefab.meta
+guid: 0f83339ac5e7a4213959aa6ee2138ce6
+PrefabImporter:
+========
 guid: 0a387a61bb376fc4d8bf48306c84fe9f
 folderAsset: yes
 DefaultImporter:
+>>>>>>>> 27a722b74dfa10d316ae30681a1e46698b04d0a8:Assets/Scripts/ItemScripts.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
