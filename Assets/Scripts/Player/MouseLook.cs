@@ -1,57 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 public class MouseLook : MonoBehaviour
 {
-    //mouse sensitivity function 
+    //mouse speed
     public float mouseSensitivity = 100f;
     public Transform playerBody;
-
-    private float xRotation = 0f;
-    private bool isScriptEnabled = true;
-
-    //changeable cursor lock state
-    private void Start()
+ 
+    float xRotation = 0f;
+ 
+    //locks the mouse on to the screen
+    void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+ 
 
-    private void Update()
+    void Update()
     {
-        //Tab and Escape enable and disable the mouse look script
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleScriptEnabledState();
-        }
-        //mouse x and y axis movement
-        if (isScriptEnabled)
-        {
-            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-            playerBody.Rotate(Vector3.up * mouseX);
-        }
-    }
-    //manages lock states and script enabling 
-    private void ToggleScriptEnabledState()
-    {
-        isScriptEnabled = !isScriptEnabled;
-
-        if (isScriptEnabled)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        //gets where the mouse is on the screen
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+ 
+        //moves the mouse onto the x and y plan and locks the y plane at 90 up and 90 down
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+ 
+        //player body rotation when moving mouse
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        playerBody.Rotate(Vector3.up * mouseX);
     }
 }
+
 
