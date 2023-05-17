@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         //Player grounded velocity / limiter
         if(isGrounded && velocity.y < 0) 
         {
-            velocity.y = -2f;
+            velocity.y = -3f;
         }
 
         //Movement on the axis planes
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         
         //player speed
-        float speed = 4f; 
+        float speed = 2f; 
        
         //Crouch code
         if(Input.GetKey(KeyCode.LeftControl)) 
