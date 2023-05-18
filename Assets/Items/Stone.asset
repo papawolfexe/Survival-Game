@@ -16,4 +16,4 @@ MonoBehaviour:
   DisplayName: Stone
   Description: stone, used for crafting
   Icon: {fileID: 21300000, guid: 57747b520842745faa2615a1cfe3f9a3, type: 3}
-  MaxStackSize: 1
+  MaxStackSize: 5

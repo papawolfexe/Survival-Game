@@ -22,7 +22,7 @@ public class PlayerInventoryHolder : InventoryHolder
 
     void Update()
     {
-        if (Keyboard.current.bKey.wasPressedThisFrame) OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
+        if (Keyboard.current.iKey.wasPressedThisFrame) OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
     }
 
     public bool AddToInventory(InventoryItemData data, int amount)
