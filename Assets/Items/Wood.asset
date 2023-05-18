@@ -16,4 +16,4 @@ MonoBehaviour:
   DisplayName: Wood
   Description: 'wood, used for crafting '
   Icon: {fileID: 21300000, guid: f14b986b0f1ac47ff8b753d612e7985c, type: 3}
-  MaxStackSize: 4
+  MaxStackSize: 2
